@@ -5,9 +5,8 @@
  * @stack: double pointer to the head of the stack
  * @line_number: line number in the file
  */
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, int value, unsigned int line_number)
 {
-	int value;
 	char *argument_str;
 	stack_t *new_node;
 	/* Implement push opcode */
