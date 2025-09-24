@@ -1,5 +1,11 @@
 #define  _POSIX_C_SOURCE 200809L
 #include "monty.h"
+/**
+ * main - monty code interpreter
+ * @argc: number of arguments
+ * @argv: monty file location
+ * Return: 0 on success
+ */
 int main(int argc, char *argv[])
 {
 	FILE *file;
