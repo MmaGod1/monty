@@ -60,6 +60,14 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 		add(stack, line_number);
 	else if (strcmp(opcode, "sub") == 0)
 		sub(stack, line_number);
+	else if (strcmp(opcode, "div") == 0)
+		_div(stack, line_number);
+	else if (strcmp(opcode, "mod") == 0)
+		mod(stack, line_number);
+	else if (strcmp(opcode, "pchar") == 0)
+		pchar(stack, line_number);
+	else if (strcmp(opcode, "pstr") == 0)
+		pstr(stack, line_number);
 	else if (strcmp(opcode, "nop") == 0)
 		;
 	else
