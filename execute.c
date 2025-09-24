@@ -9,14 +9,12 @@
  */
 void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 {
-	char *opcode;
-	char *arg;
+	char *opcode, *arg;
 	int i = 0, value;
 
 	opcode = strtok(line, " \t\n");
 	if (opcode == NULL || opcode[0] == '#')
 		return;
-
 	if (strcmp(opcode, "push") == 0)
 	{
 		arg = strtok(NULL, " \t\n");
@@ -25,11 +23,9 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
-
 		/* Validate integer (allow negative numbers) */
 		if (arg[0] == '-')
 			i++;
-
 		for (; arg[i] != '\0'; i++)
 		{
 			if (!isdigit(arg[i]))
@@ -38,7 +34,6 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 				exit(EXIT_FAILURE);
 			}
 		}
-
 		value = atoi(arg);
 		push(stack, value, line_number);
 	}

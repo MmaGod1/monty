@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	/* Check for the correct number of command-line arguments */
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: %s file\n", argv[0]);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
