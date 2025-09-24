@@ -70,6 +70,10 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 		pchar(stack, line_number);
 	else if (strcmp(opcode, "pstr") == 0)
 		pstr(stack, line_number);
+	else if (strcmp(opcode, "rotl") == 0)
+		rotl(stack, line_number);
+	else if (strcmp(opcode, "rotr") == 0)
+		rotr(stack, line_number);
 	else if (strcmp(opcode, "nop") == 0)
 		;
 	else
