@@ -58,6 +58,8 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 		swap(stack, line_number);
 	else if (strcmp(opcode, "add") == 0)
 		add(stack, line_number);
+	else if (strcmp(opcode, "sub") == 0)
+		sub(stack, line_number);
 	else if (strcmp(opcode, "nop") == 0)
 		;
 	else
