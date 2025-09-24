@@ -52,6 +52,8 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 		pall(stack, line_number);
 	else if (strcmp(opcode, "pint") == 0)
 		pint(stack, line_number);
+	else if (strcmp(opcode, "pop") == 0)
+		pop(stack, line_number);
 	else if (strcmp(opcode, "nop") == 0)
 		;
 	else
