@@ -17,7 +17,7 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 	{
 		if (strcmp(opcode, "push") == 0)
 		{
-			push(stack, arg, line_number);
+			push(stack, line_number);
 		}
 		else if (strcmp(opcode, "pall") == 0)
 		{
