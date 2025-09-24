@@ -1,48 +1,52 @@
 #include "monty.h"
 
 /**
- * push - push an element onto the stack
+ * push - pushes an element onto the stack
  * @stack: double pointer to the head of the stack
  * @line_number: line number in the file
+ *
+ * Return: void
  */
-void push(stack_t **stack, int value, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
-	char *argument_str;
+	char *arg = strtok(NULL, " \n\t");
 	stack_t *new_node;
-	/* Implement push opcode */
-	/* Check for usage error */
-	if (*stack == NULL)
+	int i = 0, value;
+
+	/* check if argument exists */
+	if (arg == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	/* Get the integer argument */
-	argument_str = strtok(NULL, " \n");
+	/* validate integer (handle negative numbers too) */
+	if (arg[0] == '-')
+		i++;
 
-	if (!argument_str || !isdigit(*argument_str))
+	for (; arg[i] != '\0'; i++)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (!isdigit(arg[i]))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
 	}
 
-	/* Convert argument to integer and push onto the stack */
-	value = atoi(argument_str);
+	value = atoi(arg);
+
 	new_node = malloc(sizeof(stack_t));
-
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
 	new_node->n = value;
 	new_node->prev = NULL;
 	new_node->next = *stack;
 
 	if (*stack != NULL)
-	{
 		(*stack)->prev = new_node;
-	}
+
 	*stack = new_node;
 }
