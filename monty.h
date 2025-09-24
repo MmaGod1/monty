@@ -63,7 +63,7 @@ void free_stack(stack_t **stack);
 
 /* mode control */
 extern int mode;
-void stack(stack_t **stack, unsigned int line_number);
-void queue(stack_t **stack, unsigned int line_number);
+void set_stack(stack_t **stack, unsigned int line_number);
+void set_queue(stack_t **stack, unsigned int line_number);
 
 #endif
