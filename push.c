@@ -9,22 +9,38 @@
  */
 void push(stack_t **stack, int value, unsigned int line_number)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *new, *last;
 
-	(void)line_number;
+	(void) line_number;
 
-	if (new_node == NULL)
+	new = malloc(sizeof(stack_t));
+	if (!new)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	new->n = value;
+	new->prev = NULL;
+	new->next = NULL;
 
-	new_node->n = value;
-	new_node->prev = NULL;
-	new_node->next = *stack;
+	if (*stack == NULL)
+	{
+		*stack = new;
+		return;
+	}
 
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
-
-	*stack = new_node;
+	if (mode == STACK) /* LIFO: add to top */
+	{
+		new->next = *stack;
+		(*stack)->prev = new;
+		*stack = new;
+	}
+	else /* QUEUE: add to bottom */
+	{
+		last = *stack;
+		while (last->next)
+			last = last->next;
+		last->next = new;
+		new->prev = last;
+	}
 }
