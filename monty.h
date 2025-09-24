@@ -60,5 +60,7 @@ void free_stack(stack_t **stack);
 
 #define STACK 0
 #define QUEUE 1
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 
 #endif
